@@ -1,0 +1,11 @@
+{
+    "agents": [
+        "copilot"
+    ],
+    "packages": [
+        "laravel/pint"
+    ],
+    "skills": [
+        "pest-testing"
+    ]
+}

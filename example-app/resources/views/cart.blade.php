@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Cart')
-
 @section('content')
-<h1>Keranjang Belanja</h1>
-<p>Your cart is empty.</p>
-<a href="/checkout" class="btn btn-warning">Proceed to Checkout</a>
+
+<h2>Keranjang Belanja</h2>
+<p>Belum ada produk di cart</p>
+
 @endsection

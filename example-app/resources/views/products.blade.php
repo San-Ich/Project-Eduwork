@@ -6,15 +6,27 @@
 
 <div class="row">
 
-<div class="col-md-3">
+@foreach($products as $product)
+
+<div class="col-md-4 mb-4">
     <div class="card">
         <div class="card-body">
-            <h5>Produk 1</h5>
-            <p>Deskripsi produk</p>
-            <p class="fw-bold">Rp 100.000</p>
+
+            <h5>{{ $product->name }}</h5>
+
+            <p>{{ $product->description }}</p>
+
+            <p>Stok: {{ $product->stock }}</p>
+
+            <span class="badge bg-secondary">
+                {{ $product->category->name ?? 'No Category' }}
+            </span>
+
         </div>
     </div>
 </div>
+
+@endforeach
 
 </div>
 

@@ -15,6 +15,12 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
+                        {{ __('Kategori') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
+                        {{ __('Produk') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -71,6 +77,12 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
+        <li class="nav-item">
+            <a href="/categories" class="nav-link">Kategori</a>
+        </li>
+        <li class="nav-item">
+            <a href="/products" class="nav-link">Produk</a>
+        </li>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

@@ -11,6 +11,11 @@ class PageController extends Controller
         return view('home');
     }
 
+    public function products()
+    {
+        return view('products');
+    }
+
     public function cart()
     {
         return view('cart');

@@ -1,33 +1,9 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
+    <h2>Daftar Produk</h2>
 
-<h2>Daftar Produk</h2>
+    @foreach($products as $product)
+        <p>{{ $product->name }}</p>
+    @endforeach
 
-<div class="row">
-
-@foreach($products as $product)
-
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <div class="card-body">
-
-            <h5>{{ $product->name }}</h5>
-
-            <p>{{ $product->description }}</p>
-
-            <p>Stok: {{ $product->stock }}</p>
-
-            <span class="badge bg-secondary">
-                {{ $product->category->name ?? 'No Category' }}
-            </span>
-
-        </div>
-    </div>
-</div>
-
-@endforeach
-
-</div>
-
-@endsection
+</x-app-layout>

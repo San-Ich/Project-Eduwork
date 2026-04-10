@@ -12,7 +12,8 @@ class Product extends Model
         'stock',
         'price',
         'image',
-        'category_id'
+        'category_id',
+        'clicks'
     ];
 
     // relasi ke kategori

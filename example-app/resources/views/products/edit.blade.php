@@ -13,10 +13,7 @@
 
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nama Produk</label>
-                        <input type="text" name="name" id="name" value="{{ old('name', $product->name) }}" 
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500
-                            @error('name') border-red-500 @enderror" 
-                            placeholder="Masukkan nama produk" required>
+                        <input type="text" name="name" id="name" value="{{ old('name', $product->name) }}" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 @error('name') border-red-500 @enderror" placeholder="Masukkan nama produk" required>
                         @error('name')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
@@ -24,10 +21,7 @@
 
                     <div class="mb-4">
                         <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Deskripsi</label>
-                        <textarea name="description" id="description" rows="3"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500
-                            @error('description') border-red-500 @enderror" 
-                            placeholder="Masukkan deskripsi produk" required>{{ old('description', $product->description) }}</textarea>
+                        <textarea name="description" id="description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 @error('description') border-red-500 @enderror" placeholder="Masukkan deskripsi produk" required>{{ old('description', $product->description) }}</textarea>
                         @error('description')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
@@ -36,10 +30,7 @@
                     <div class="grid grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="stock" class="block text-gray-700 text-sm font-bold mb-2">Stok</label>
-                            <input type="number" name="stock" id="stock" value="{{ old('stock', $product->stock) }}" 
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500
-                                @error('stock') border-red-500 @enderror" 
-                                min="0" required>
+                            <input type="number" name="stock" id="stock" value="{{ old('stock', $product->stock) }}" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 @error('stock') border-red-500 @enderror" min="0" required>
                             @error('stock')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -47,10 +38,7 @@
 
                         <div>
                             <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Harga</label>
-                            <input type="number" name="price" id="price" value="{{ old('price', $product->price) }}" 
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500
-                                @error('price') border-red-500 @enderror" 
-                                min="0" step="0.01" required>
+                            <input type="number" name="price" id="price" value="{{ old('price', $product->price) }}" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 @error('price') border-red-500 @enderror" min="0" step="0.01" required>
                             @error('price')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -59,15 +47,10 @@
 
                     <div class="mb-4">
                         <label for="category_id" class="block text-gray-700 text-sm font-bold mb-2">Kategori</label>
-                        <select name="category_id" id="category_id" 
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500
-                            @error('category_id') border-red-500 @enderror" 
-                            required>
+                        <select name="category_id" id="category_id" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 @error('category_id') border-red-500 @enderror" required>
                             <option value="">-- Pilih Kategori --</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
-                                    {{ $category->name }}
-                                </option>
+                                <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                         @error('category_id')
@@ -83,9 +66,7 @@
                                 <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="w-32 h-32 object-cover rounded">
                             </div>
                         @endif
-                        <input type="file" name="image" id="image" accept="image/*"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500
-                            @error('image') border-red-500 @enderror">
+                        <input type="file" name="image" id="image" accept="image/*" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 @error('image') border-red-500 @enderror">
                         <p class="text-sm text-gray-500 mt-1">Kosongkan jika tidak ingin mengubah gambar</p>
                         @error('image')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -93,46 +74,10 @@
                     </div>
 
                     <div class="flex gap-2">
-                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                            Perbarui
-                        </button>
-                        <a href="{{ route('products.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                            Batal
-                        </a>
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">Perbarui</button>
+                        <a href="{{ route('products.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150">Batal</a>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
-                            </select>
-                            @error('category_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="image" class="form-label">Product Image</label>
-                            @if($product->image)
-                                <div class="mb-2">
-                                    <img src="{{ asset('images/products/' . $product->image) }}" alt="Current Image" style="max-width: 200px; max-height: 200px;">
-                                    <p class="text-muted">Leave empty to keep current image</p>
-                                </div>
-                            @endif
-                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
-                            @error('image')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-primary">Update Product</button>
-                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-info">View Product</a>
-                            <a href="{{ route('products.index') }}" class="btn btn-secondary">Cancel</a>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>

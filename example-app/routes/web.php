@@ -12,8 +12,8 @@ Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('categories', ProductCategoryController::class);
-Route::resource('products', ProductController::class);
+Route::resource('categories', ProductCategoryController::class)->middleware('admin');
+Route::resource('products', ProductController::class)->middleware('admin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

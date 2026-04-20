@@ -13,8 +13,12 @@ Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('categories', ProductCategoryController::class)->middleware('admin');
-Route::resource('products', ProductController::class)->middleware('admin');
+Route::resource('categories', ProductCategoryController::class)
+    ->names('product-category')
+    ->middleware('admin');
+Route::resource('products', ProductController::class)
+    ->names('product')
+    ->middleware('admin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -1,13 +1,11 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold">Daftar Produk</h2>
-                    <a href="{{ route('products.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    <a href="{{ route('product.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
                         + Tambah Produk
                     </a>
                 </div>
@@ -47,10 +45,10 @@
                                         @endif
                                     </td>
                                     <td class="border border-gray-300 px-4 py-2">
-                                        <a href="{{ route('products.edit', $product->id) }}" class="inline-flex items-center px-3 py-1 bg-yellow-500 text-white rounded text-sm hover:bg-yellow-600 mr-2">
+                                        <a href="{{ route('product.edit', $product->id) }}" class="inline-flex items-center px-3 py-1 bg-yellow-500 text-white rounded text-sm hover:bg-yellow-600 mr-2">
                                             Edit
                                         </a>
-                                        <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus?');">
+                                        <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus?');">
                                             @csrf
                                             @method('DELETE')
                                             <button class="inline-flex items-center px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700">
@@ -78,4 +76,4 @@
         </div>
     </div>
 </div>
-@endsection
+</x-app-layout>

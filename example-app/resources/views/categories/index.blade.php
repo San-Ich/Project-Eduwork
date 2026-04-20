@@ -5,7 +5,7 @@
             <div class="p-6 text-gray-900">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold">Daftar Kategori Produk</h2>
-                    <a href="{{ route('categories.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    <a href="{{ route('product-category.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
                         + Tambah Kategori
                     </a>
                 </div>
@@ -33,10 +33,10 @@
                                     <td class="border border-gray-300 px-4 py-2">{{ $category->name }}</td>
                                     <td class="border border-gray-300 px-4 py-2">{{ $category->products_count }}</td>
                                     <td class="border border-gray-300 px-4 py-2">
-                                        <a href="{{ route('categories.edit', $category->id) }}" class="inline-flex items-center px-3 py-1 bg-yellow-500 text-white rounded text-sm hover:bg-yellow-600 mr-2">
+                                        <a href="{{ route('product-category.edit', $category->id) }}" class="inline-flex items-center px-3 py-1 bg-yellow-500 text-white rounded text-sm hover:bg-yellow-600 mr-2">
                                             Edit
                                         </a>
-                                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus?');">
+                                        <form action="{{ route('product-category.destroy', $category->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus?');">
                                             @csrf
                                             @method('DELETE')
                                             <button class="inline-flex items-center px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700">

@@ -1,8 +1,4 @@
-@extends('layouts.app')
-
-@section('title', $product->name)
-
-@section('content')
+<x-app-layout>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -10,8 +6,8 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3>{{ $product->name }}</h3>
                     <div>
-                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="{{ route('products.index') }}" class="btn btn-secondary btn-sm">Back to Products</a>
+                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('product.index') }}" class="btn btn-secondary btn-sm">Back to Products</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -47,4 +43,4 @@
         </div>
     </div>
 </div>
-@endsection
+</x-app-layout>

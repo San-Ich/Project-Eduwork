@@ -15,10 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
+                    <x-nav-link :href="route('product-category.index')" :active="request()->routeIs('product-category.*')">
                         {{ __('Kategori') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
+                    <x-nav-link :href="route('product.index')" :active="request()->routeIs('product.*')">
                         {{ __('Produk') }}
                     </x-nav-link>
                 </div>
@@ -78,10 +78,10 @@
             </x-responsive-nav-link>
         </div>
         <li class="nav-item">
-            <a href="/categories" class="nav-link">Kategori</a>
+            <a href="{{ route('product-category.index') }}" class="nav-link">Kategori</a>
         </li>
         <li class="nav-item">
-            <a href="/products" class="nav-link">Produk</a>
+            <a href="{{ route('product.index') }}" class="nav-link">Produk</a>
         </li>
 
         <!-- Responsive Settings Options -->

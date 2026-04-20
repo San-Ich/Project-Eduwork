@@ -42,7 +42,7 @@ class ProductController extends Controller
 
         Product::create($data);
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully');
+        return redirect()->route('product.index')->with('success', 'Product created successfully');
     }
 
     public function show($id)
@@ -84,7 +84,7 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully');
+        return redirect()->route('product.index')->with('success', 'Product updated successfully');
     }
 
     public function destroy($id)
@@ -98,6 +98,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully');
+        return redirect()->route('product.index')->with('success', 'Product deleted successfully');
     }
 }

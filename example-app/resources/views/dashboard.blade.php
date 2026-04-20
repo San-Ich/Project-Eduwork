@@ -23,7 +23,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <a href="{{ route('products.index') }}" class="inline-block mt-4 text-blue-600 text-sm font-medium hover:text-blue-800">
+                        <a href="{{ route('product.index') }}" class="inline-block mt-4 text-blue-600 text-sm font-medium hover:text-blue-800">
                             Lihat Detail →
                         </a>
                     </div>
@@ -43,7 +43,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <a href="{{ route('categories.index') }}" class="inline-block mt-4 text-green-600 text-sm font-medium hover:text-green-800">
+                        <a href="{{ route('product-category.index') }}" class="inline-block mt-4 text-green-600 text-sm font-medium hover:text-green-800">
                             Lihat Detail →
                         </a>
                     </div>
@@ -73,19 +73,19 @@
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-semibold mb-4">Akses Cepat</h3>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        <a href="{{ route('products.index') }}" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 transition">
+                        <a href="{{ route('product.index') }}" class="p-4 border border-gray-200 rounded-lg hover:bg-blue-50 transition">
                             <p class="font-medium text-blue-600">📦 Produk</p>
                             <p class="text-sm text-gray-600">Kelola produk</p>
                         </a>
-                        <a href="{{ route('categories.index') }}" class="p-4 border border-gray-200 rounded-lg hover:bg-green-50 transition">
+                        <a href="{{ route('product-category.index') }}" class="p-4 border border-gray-200 rounded-lg hover:bg-green-50 transition">
                             <p class="font-medium text-green-600">📂 Kategori</p>
                             <p class="text-sm text-gray-600">Kelola kategori</p>
                         </a>
-                        <a href="{{ route('products.create') }}" class="p-4 border border-gray-200 rounded-lg hover:bg-yellow-50 transition">
+                        <a href="{{ route('product.create') }}" class="p-4 border border-gray-200 rounded-lg hover:bg-yellow-50 transition">
                             <p class="font-medium text-yellow-600">➕ Produk Baru</p>
                             <p class="text-sm text-gray-600">Tambah produk</p>
                         </a>
-                        <a href="{{ route('categories.create') }}" class="p-4 border border-gray-200 rounded-lg hover:bg-purple-50 transition">
+                        <a href="{{ route('product-category.create') }}" class="p-4 border border-gray-200 rounded-lg hover:bg-purple-50 transition">
                             <p class="font-medium text-purple-600">➕ Kategori Baru</p>
                             <p class="text-sm text-gray-600">Tambah kategori</p>
                         </a>

@@ -19,6 +19,7 @@ class RegularUserSeeder extends Seeder
                 'email' => 'user@example.com',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'user',
+                'email_verified_at' => now(),
             ]
         );
     }

@@ -12,10 +12,8 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('categories')->insert([
-            ['name' => 'Electronics'],
-            ['name' => 'Fashion'],
-            ['name' => 'Home'],
-        ]);
+        \App\Models\ProductCategory::firstOrCreate(['name' => 'Electronics']);
+        \App\Models\ProductCategory::firstOrCreate(['name' => 'Fashion']);
+        \App\Models\ProductCategory::firstOrCreate(['name' => 'Home']);
     }
 }

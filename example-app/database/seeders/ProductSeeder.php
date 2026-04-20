@@ -12,28 +12,32 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('products')->insert([
-            [
-                'name' => 'Laptop ASUS',
-                'description' => 'Laptop untuk coding',
-                'stock' => 10,
-                'image' => 'laptop.jpg',
-                'category_id' => 1
-            ],
-            [
-                'name' => 'Sepatu Nike',
-                'description' => 'Sepatu olahraga',
-                'stock' => 20,
-                'image' => 'sepatu.jpg',
-                'category_id' => 2
-            ],
-            [
-                'name' => 'Meja Kayu',
-                'description' => 'Meja minimalis',
-                'stock' => 5,
-                'image' => 'meja.jpg',
-                'category_id' => 3
-            ]
+        $electronics = \App\Models\ProductCategory::where('name', 'Electronics')->first();
+        $fashion = \App\Models\ProductCategory::where('name', 'Fashion')->first();
+        $home = \App\Models\ProductCategory::where('name', 'Home')->first();
+
+        \App\Models\Product::create([
+            'name' => 'Laptop ASUS',
+            'description' => 'Laptop untuk coding',
+            'stock' => 10,
+            'image' => 'laptop.jpg',
+            'category_id' => $electronics->id
+        ]);
+
+        \App\Models\Product::create([
+            'name' => 'Sepatu Nike',
+            'description' => 'Sepatu olahraga',
+            'stock' => 20,
+            'image' => 'sepatu.jpg',
+            'category_id' => $fashion->id
+        ]);
+
+        \App\Models\Product::create([
+            'name' => 'Meja Kayu',
+            'description' => 'Meja minimalis',
+            'stock' => 5,
+            'image' => 'meja.jpg',
+            'category_id' => $home->id
         ]);
     }
 }

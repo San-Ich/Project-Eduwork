@@ -19,6 +19,7 @@ class AdminUserSeeder extends Seeder
                 'email' => 'admin@example.com',
                 'password' => \Illuminate\Support\Facades\Hash::make('password'),
                 'role' => 'admin',
+                'email_verified_at' => now(),
             ]
         );
     }

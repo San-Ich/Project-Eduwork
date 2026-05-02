@@ -1,93 +1,53 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+﻿<x-app-layout>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <h1 class="text-3xl font-bold mb-4">Welcome to My E-Commerce</h1>
+                    <p class="text-lg mb-6">Ini adalah halaman utama aplikasi e-commerce kami. Klik produk untuk melihat detail lengkap.</p>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        <!-- Navigation -->
-        <nav class="bg-white border-b border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-16">
-                    <div class="flex">
-                        <!-- Logo -->
-                        <div class="shrink-0 flex items-center">
-                            <a href="{{ route('home') }}">
-                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                            </a>
-                        </div>
-
-                        <!-- Navigation Links -->
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <a href="{{ route('home') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                Home
-                            </a>
-                        </div>
+                    <div class="mb-6">
+                        <a href="{{ route('product.index') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                            Lihat Semua Produk
+                        </a>
                     </div>
 
-                    <!-- Authentication Links -->
-                    <div class="hidden sm:flex sm:items-center sm:ms-6">
-                        @guest
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @else
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="text-sm text-gray-700 underline">Logout</button>
-                            </form>
-                        @endguest
-                    </div>
+                    @if($products->isEmpty())
+                        <div class="rounded-xl border border-dashed border-gray-300 p-6 text-center text-gray-500">
+                            Belum ada produk tersedia.
+                        </div>
+                    @else
+                        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                            @foreach($products as $product)
+                                <a href="{{ route('product.show', $product->id) }}" class="block overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                                    <div class="h-48 bg-gray-100">
+                                        @if($product->image)
+                                            <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="h-full w-full object-cover" />
+                                        @else
+                                            <div class="flex h-full items-center justify-center text-sm text-gray-500">No Image</div>
+                                        @endif
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <h3 class="text-lg font-semibold text-gray-900">{{ $product->name }}</h3>
+                                            <span class="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800">
+                                                {{ $product->category->name ?? 'No Category' }}
+                                            </span>
+                                        </div>
+
+                                        <p class="text-sm text-gray-600 line-clamp-3">{{ $product->description }}</p>
+
+                                        <div class="mt-4 flex items-center justify-between text-sm text-gray-700">
+                                            <span>Stok: {{ $product->stock }}</span>
+                                            <span class="font-semibold">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
-        </nav>
-
-        <!-- Page Content -->
-        <main>
-            <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 text-gray-900">
-                            <h1 class="text-3xl font-bold mb-4">Welcome to My E-Commerce</h1>
-                            <p class="text-lg mb-6">Ini adalah halaman utama aplikasi e-commerce kami.</p>
-
-                            @guest
-                                <div class="space-x-4">
-                                    <a href="{{ route('login') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                                        Login
-                                    </a>
-                                    <a href="{{ route('register') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                                        Register
-                                    </a>
-                                </div>
-                            @else
-                                <div class="space-x-4">
-                                    <a href="{{ route('dashboard') }}" class="inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                                        Dashboard
-                                    </a>
-                                    <form method="POST" action="{{ route('logout') }}" class="inline">
-                                        @csrf
-                                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 focus:bg-red-700 active:bg-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                                            Logout
-                                        </button>
-                                    </form>
-                                </div>
-                            @endguest
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+        </div>
     </div>
-</body>
-</html>
+</x-app-layout>

@@ -16,9 +16,16 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 Route::resource('categories', ProductCategoryController::class)
     ->names('product-category')
     ->middleware('admin');
+Route::get('/products', [ProductController::class, 'index'])
+    ->name('product.index');
+
 Route::resource('products', ProductController::class)
     ->names('product')
+    ->except(['index', 'show'])
     ->middleware('admin');
+
+Route::get('/products/{product}', [ProductController::class, 'show'])
+    ->name('product.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
